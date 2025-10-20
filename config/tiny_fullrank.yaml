@@ -1,0 +1,41 @@
+#  configure for fine-tuning of CubeDiff “tiny” model – 700 panoramas
+# --- data --------------------------------------------------
+
+dataset: "/home/jupyter/mluser/git/llm-cv-pano-cubediff/cl/data/dataspace/polyhaven_tiny_13_new_pt/cubediff_train.tar"
+val_dataset: "/home/jupyter/mluser/git/llm-cv-pano-cubediff/cl/data/dataspace/polyhaven_tiny_13_new_pt/cubediff_val.tar"
+batch_size:    2 # 8 # 4         # per GPU process 
+eval_batch_size: 2
+num_workers:   10 # 8 # 4 # 8  # bump these to drive more CPU‐side throughput       
+
+# --- optimisation -----------------------------------------
+gradient_accum_steps: 4 # 16 # 2 # 4 # 1 # accumulate gradients over 1 step (batch size 2) to reduce trainig time
+learning_rate:     8.0e-5 # 5.0e-6 # 2.0e-5  # lower peak LR for stable convergence, drop LR to bring update size back in line with what I had under ε-MSE (≈ 0.14–0.48). 
+mixed_precision: bf16 # fp16
+
+# --- training ---------------------------------------------
+max_train_steps:    30000 # 30000  # total gradient‐update iterations (batch 64) per paper
+eval_cycle: 400 # 200 # 100 # 50 # run evaluation (save deepspeed_ckpt_step; get global_loss for all-reduce ranks and collect train loss and generate_samples for rank==0; run self.evaluate for all ranks) if gsteps%eval_cycle == 0
+warmup_ratio:  0.03 # 0.1 # 0.3333 # 0.03 # 0.33  # 0.1
+plateau_ratio: 0
+
+# --- misc --------------------------------------------------
+use_wandb:          false
+output_dir:         "outputs/cubediff_tiny_lora"
+seed:               1337
+
+# --- quantization / inflation tweaks ----------------------
+skip_weight_copy: False  # if no copy (old latent weights & biases from UNet2DConditionModel), the panorama will be noisy colors even trained for 12k+ data samples
+
+# --- cubic‐tiny inflation schedule ----------------------
+# Only inflate these four self‐attention modules:
+
+# inflated all self/cross attn layers to copy all pre-trained unet weights and biases
+# inflate_layers:
+#   - mid_block.attentions.0.transformer_blocks.0.attn1  # self-attn @ C=1280
+#   - mid_block.attentions.0.transformer_blocks.0.attn2  # cross-attn @ C=1280↔768
+#   - down_blocks.2.attentions.0.transformer_blocks.0.attn1  # self-attn @ C=1280
+#   - down_blocks.2.attentions.0.transformer_blocks.0.attn2  # cross-attn @ C=1280↔768
+#   - down_blocks.1.attentions.0.transformer_blocks.0.attn1  # self-attn @ C=640
+#   - up_blocks.1.attentions.0.transformer_blocks.0.attn1    # self-attn @ C=640
+#   - up_blocks.1.attentions.0.transformer_blocks.0.attn2    # cross-attn @ C=640↔768
+

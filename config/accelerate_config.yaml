@@ -1,0 +1,104 @@
+# config/accelerate_config.yaml
+
+# 1) Where are we running?
+compute_environment: LOCAL_MACHINE
+
+# 2) What kind of distributed?
+#    MULTI_GPU will do DDP over all GPUs on this node
+distributed_type: MULTI_GPU
+
+# 3) How many GPUs (processes) in total?
+num_processes: 8
+
+# 4) How many machines, and which one is this?
+num_machines: 1
+machine_rank: 0
+
+# 5) (Leave these null to auto-pick a free port)
+main_process_ip: null
+main_process_port: null
+
+# 6) Mixed precision mode: bf16 on L4, or fp16 if you prefer
+mixed_precision: bf16 # fp16 # bf16; The L4’s architecture doesn’t expose a BF16 datapath to CUDA the way A100 does, so attempting mixed_precision="bf16" will fall back or error.
+
+# 7) Don’t force downcast beyond your choice
+downcast_bf16: no
+
+# 8) CPU-only fallback, 
+use_cpu: false
+
+# 9) FSDP config (optional, empty if using DeepSpeed instead)
+fsdp_config: {} 
+
+# 10) DeepSpeed ZeRO config (saves ≈15–20 GiB per GPU by sharding optimizer + gradients)
+deepspeed_config:
+  # ZeRO-2 shards optimizer states and gradients across GPUs
+  zero_optimization:
+    stage: 2                # ZeRO-2: shard optimizer states + gradients
+    allgather_partitions: true
+    allgather_bucket_size: 200000000 # 500000000    # Increased from 200M
+    reduce_scatter: true
+    reduce_bucket_size: 200000000 # 500000000       # Increased from 200M
+    contiguous_gradients: true
+    overlap_comm: true      # overlap comms and compute for hidden-latency
+    overlapped_optimization: true # overlap optimizer step with comms
+    # sub_group_size: 1000000000          # New: larger sub-groups
+    round_robin_gradients: true         # Better load balancing
+
+  # train_micro_batch_size_per_gpu: 16    # Match new batch size
+  # offload_optimizer:
+  #   device: cpu             # offload optimizer states to CPU RAM
+  #   pin_memory: true        # for faster host<->device transfers
+  # offload_param:
+  #   device: cpu             # (optional) offload model params for ZeRO-3
+  #   pin_memory: true
+  # gradient_accumulation_steps: 2
+  # gradient_clipping: 1.0
+  # fp16:
+  #   enabled: false
+  #   opt_level: "O2"                     # More aggressive FP16
+
+  # Enable gradient compression for faster communication
+  compression_training:
+    weight_quantization:
+      shared_parameters:
+        enabled: false
+        quantizer_kernel: false
+    activation_quantization:
+      shared_parameters:
+        enabled: false
+        quantizer_kernel: false
+    sparse_pruning:
+      shared_parameters:
+        enabled: false
+        dense_ratio: 0.5
+    row_pruning:
+      shared_parameters:
+        enabled: false
+        dense_ratio: 0.5
+    head_pruning:
+      shared_parameters:
+        enabled: false
+        num_heads: 12
+        dense_ratio: 0.5
+  bf16:
+    enabled: true
+
+  # Communication optimization
+  comms_config:
+    fp16_enabled: false
+    bf16_enabled: true
+
+  # Allow using optimizers not officially tested by DeepSpeed
+  zero_allow_untested_optimizer: true
+  
+  # Let accelerate handle these from your training script arguments
+  gradient_accumulation_steps: 'auto'
+  gradient_clipping: 'auto'
+  train_batch_size: 'auto'
+  train_micro_batch_size_per_gpu: 'auto'
+
+# Notes:
+# - With ZeRO-2, optimizer states + gradients are sharded across ranks, dropping ~3–4× memory use vs DDP alone.
+# - Offloading further moves state to CPU, freeing ∼15–20 GiB/GPU, enabling batch sizes ≥8 on A100.
+# - Overlap and contiguous gradients are industry best practices to hide comm latency (DeepSpeed tutorial)
