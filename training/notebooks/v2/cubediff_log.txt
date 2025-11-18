@@ -1208,10 +1208,469 @@ Loading Scheduler done
 ✅ CubeDiffPipeline initialized.
 Explicitly moved positional_encoding to cuda:0
 Running warmup forward pass...
-✗ Warmup failed: Current CUDA Device does not support bfloat16. Please switch dtype to float16.
-Debugging device locations:
-  fake_latents.device: cuda:0
-  fake_timesteps.device: cuda:0
-  fake_txt_emb.device: cuda:0
-  model device: cuda:0
-  face_emb device: cuda:0
+trainer.py - CubeDiffTrainer - setup_model - UNet model parameters set to requires_grad for inflated-attn layers only
+
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=320, out_features=320, bias=False)
+  (to_v): Linear(in_features=320, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.0.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.0.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.0.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.0.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.0.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=768, out_features=320, bias=False)
+  (to_v): Linear(in_features=768, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.0.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.0.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.0.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.0.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.0.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=320, out_features=320, bias=False)
+  (to_v): Linear(in_features=320, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.1.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.1.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.1.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.1.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.1.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=768, out_features=320, bias=False)
+  (to_v): Linear(in_features=768, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.1.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.1.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.1.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.1.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.0.attentions.1.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=640, out_features=640, bias=False)
+  (to_v): Linear(in_features=640, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.0.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.0.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.0.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.0.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.0.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=768, out_features=640, bias=False)
+  (to_v): Linear(in_features=768, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.0.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.0.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.0.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.0.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.0.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=640, out_features=640, bias=False)
+  (to_v): Linear(in_features=640, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.1.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.1.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.1.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.1.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.1.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=768, out_features=640, bias=False)
+  (to_v): Linear(in_features=768, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.1.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.1.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.1.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.1.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.1.attentions.1.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_v): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.0.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.0.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.0.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.0.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.0.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=768, out_features=1280, bias=False)
+  (to_v): Linear(in_features=768, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.0.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.0.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.0.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.0.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.0.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_v): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.1.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.1.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.1.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.1.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.1.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=768, out_features=1280, bias=False)
+  (to_v): Linear(in_features=768, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.1.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.1.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.1.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.1.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer down_blocks.2.attentions.1.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_v): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.0.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.0.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.0.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.0.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.0.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=768, out_features=1280, bias=False)
+  (to_v): Linear(in_features=768, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.0.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.0.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.0.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.0.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.0.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_v): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.1.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.1.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.1.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.1.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.1.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=768, out_features=1280, bias=False)
+  (to_v): Linear(in_features=768, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.1.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.1.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.1.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.1.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.1.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_v): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.2.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.2.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.2.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.2.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.2.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=768, out_features=1280, bias=False)
+  (to_v): Linear(in_features=768, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.2.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.2.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.2.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.2.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.1.attentions.2.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=640, out_features=640, bias=False)
+  (to_v): Linear(in_features=640, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.0.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.0.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.0.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.0.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.0.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=768, out_features=640, bias=False)
+  (to_v): Linear(in_features=768, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.0.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.0.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.0.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.0.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.0.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=640, out_features=640, bias=False)
+  (to_v): Linear(in_features=640, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.1.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.1.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.1.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.1.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.1.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=768, out_features=640, bias=False)
+  (to_v): Linear(in_features=768, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.1.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.1.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.1.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.1.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.1.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=640, out_features=640, bias=False)
+  (to_v): Linear(in_features=640, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.2.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.2.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.2.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.2.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.2.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=768, out_features=640, bias=False)
+  (to_v): Linear(in_features=768, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.2.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.2.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.2.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.2.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.2.attentions.2.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=320, out_features=320, bias=False)
+  (to_v): Linear(in_features=320, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.0.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.0.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.0.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.0.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.0.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=768, out_features=320, bias=False)
+  (to_v): Linear(in_features=768, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.0.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.0.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.0.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.0.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.0.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=320, out_features=320, bias=False)
+  (to_v): Linear(in_features=320, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.1.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.1.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.1.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.1.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.1.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=768, out_features=320, bias=False)
+  (to_v): Linear(in_features=768, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.1.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.1.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.1.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.1.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.1.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=320, out_features=320, bias=False)
+  (to_v): Linear(in_features=320, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.2.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.2.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.2.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.2.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.2.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=768, out_features=320, bias=False)
+  (to_v): Linear(in_features=768, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.2.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.2.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.2.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.2.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer up_blocks.3.attentions.2.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_v): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer mid_block.attentions.0.transformer_blocks.0.attn1.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer mid_block.attentions.0.transformer_blocks.0.attn1.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer mid_block.attentions.0.transformer_blocks.0.attn1.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer mid_block.attentions.0.transformer_blocks.0.attn1.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer mid_block.attentions.0.transformer_blocks.0.attn1.to_out.0.bias, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated module InflatedAttention at InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=768, out_features=1280, bias=False)
+  (to_v): Linear(in_features=768, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+) with is_inflated = True
+[TRAINABLE] trainer.py - setup_model - inflated layer mid_block.attentions.0.transformer_blocks.0.attn2.to_q.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer mid_block.attentions.0.transformer_blocks.0.attn2.to_k.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer mid_block.attentions.0.transformer_blocks.0.attn2.to_v.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer mid_block.attentions.0.transformer_blocks.0.attn2.to_out.0.weight, requires_grad = True
+[TRAINABLE] trainer.py - setup_model - inflated layer mid_block.attentions.0.transformer_blocks.0.attn2.to_out.0.bias, requires_grad = True
+>>> trainer.py - setup_model - 160 parameters un-frozen for fine-tuning (inflated modules)
+👉 trainer.py - CubeDiffTrainer - setup_model - UNet model parameters set to requires_grad for Full-rank tuning: 93.54M / 859.6M params
+trainer.py - CubeDiffTrainer- CubeDiff Model components cast to torch.bfloat16
+trainer.py - CubeDiffTrainer - CubeDiff Model enabled gradient checkpointing
+
+trainer.py - CubeDiffTrainer - CubeDiff Model enabled xformers
+
+>>> Training 170 tensors, totalling 93,537,040 params
+trainer.py - CubeDiffTrainer - setup_model done - Total params 859.6M — trainable 93.54M
+🚀 Compiling model with optimized settings for L4 GPUs...
+⚠️ Model compilation failed: Either mode or options can be specified, but both can't be specified at the same time.
+Training will continue without compilation...
+trainer.py - CubeDiffTrainer - setup_model - torch.compile done, cost 0.0001 seconds
+trainer.py - CubeDiffTrainer - init - setup_model runwayml/stable-diffusion-v1-5 done
+
+trainer.py - CubeDiffTrainer - init - vgg16 loading done
