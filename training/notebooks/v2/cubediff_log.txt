@@ -1,0 +1,1217 @@
+>>> DEBUG: looking for: /opt/conda/lib/python3.10/site-packages/transformers/integrations/tensor_parallel.py
+>>> WARNING: tensor_parallel.py not found — skipping patch (Transformers version is new).
+Flash SDPA: False
+MemEff SDPA: False
+Math SDPA: True
+✅ Loaded runwayml/stable-diffusion-v1-5 from cache
+⚠️ UNet2DConditionModel.forward does not appear to be patched
+❌ Could not check PeftModel: No module named 'peft'
+❌ Could not check LoraModel: No module named 'peft'
+⚠️ Not all classes are patched - training may encounter errors
+Warning: Some classes are not patched - training may encounter errors
+train_cubediff.py - cfg is {'dataset': '/home/jupyter/mluser/git/llm-cv-pano-cubediff/cl/data/dataspace/polyhaven_tiny_13_new_pt/cubediff_train.tar', 'val_dataset': '/home/jupyter/mluser/git/llm-cv-pano-cubediff/cl/data/dataspace/polyhaven_tiny_13_new_pt/cubediff_val.tar', 'batch_size': 2, 'eval_batch_size': 2, 'num_workers': 10, 'gradient_accum_steps': 4, 'learning_rate': 8e-05, 'mixed_precision': 'bf16', 'max_train_steps': 1, 'eval_cycle': 1, 'warmup_ratio': 0.03, 'plateau_ratio': 0, 'use_wandb': False, 'output_dir': 'outputs/cubediff_tiny_lora', 'seed': 1337, 'skip_weight_copy': False}
+trainer.py - init - Rank 0: Accelerator state: Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: cuda:0
+
+Mixed precision type: bf16
+
+trainer.py - init - Distributed type: MULTI_GPU
+trainer.py - init - Using DeepSpeed: False
+Rank 0: local_rank=0, device=cuda:0
+Moving all components to cuda:0...
+Loading VAE…
+pipeline.py - CubeDiffPipeline - __init__ - replace_group_norms: replaced 52 GroupNorm layers with SynchronizedGroupNorm.
+pipeline.py - CubeDiffPipeline - safe loading U-Net…
+pipelien.py - CubeDiffPipeline - Wrapping & inflating U-Net (CubeDiffModel)…
+architecture.py - CubeDiffModel - 🔍 All Attention modules in UNet:
+    down_blocks.0.attentions.0.transformer_blocks.0.attn1 (self)
+    down_blocks.0.attentions.0.transformer_blocks.0.attn2 (self)
+    down_blocks.0.attentions.1.transformer_blocks.0.attn1 (self)
+    down_blocks.0.attentions.1.transformer_blocks.0.attn2 (self)
+    down_blocks.1.attentions.0.transformer_blocks.0.attn1 (self)
+    down_blocks.1.attentions.0.transformer_blocks.0.attn2 (self)
+    down_blocks.1.attentions.1.transformer_blocks.0.attn1 (self)
+    down_blocks.1.attentions.1.transformer_blocks.0.attn2 (self)
+    down_blocks.2.attentions.0.transformer_blocks.0.attn1 (self)
+    down_blocks.2.attentions.0.transformer_blocks.0.attn2 (self)
+    down_blocks.2.attentions.1.transformer_blocks.0.attn1 (self)
+    down_blocks.2.attentions.1.transformer_blocks.0.attn2 (self)
+    up_blocks.1.attentions.0.transformer_blocks.0.attn1 (self)
+    up_blocks.1.attentions.0.transformer_blocks.0.attn2 (self)
+    up_blocks.1.attentions.1.transformer_blocks.0.attn1 (self)
+    up_blocks.1.attentions.1.transformer_blocks.0.attn2 (self)
+    up_blocks.1.attentions.2.transformer_blocks.0.attn1 (self)
+    up_blocks.1.attentions.2.transformer_blocks.0.attn2 (self)
+    up_blocks.2.attentions.0.transformer_blocks.0.attn1 (self)
+    up_blocks.2.attentions.0.transformer_blocks.0.attn2 (self)
+    up_blocks.2.attentions.1.transformer_blocks.0.attn1 (self)
+    up_blocks.2.attentions.1.transformer_blocks.0.attn2 (self)
+    up_blocks.2.attentions.2.transformer_blocks.0.attn1 (self)
+    up_blocks.2.attentions.2.transformer_blocks.0.attn2 (self)
+    up_blocks.3.attentions.0.transformer_blocks.0.attn1 (self)
+    up_blocks.3.attentions.0.transformer_blocks.0.attn2 (self)
+    up_blocks.3.attentions.1.transformer_blocks.0.attn1 (self)
+    up_blocks.3.attentions.1.transformer_blocks.0.attn2 (self)
+    up_blocks.3.attentions.2.transformer_blocks.0.attn1 (self)
+    up_blocks.3.attentions.2.transformer_blocks.0.attn2 (self)
+    mid_block.attentions.0.transformer_blocks.0.attn1 (self)
+    mid_block.attentions.0.transformer_blocks.0.attn2 (self)
+architecture.py - CubeDiffModel - DEBUG: All trainable param names in base_unet:
+architecture.py - CubeDiffModel - base_unet name is conv_in.weight
+architecture.py - CubeDiffModel - base_unet name is conv_in.bias
+architecture.py - CubeDiffModel - base_unet name is time_embedding.linear_1.weight
+architecture.py - CubeDiffModel - base_unet name is time_embedding.linear_1.bias
+architecture.py - CubeDiffModel - base_unet name is time_embedding.linear_2.weight
+architecture.py - CubeDiffModel - base_unet name is time_embedding.linear_2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.norm.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.norm.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.0.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.norm.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.norm.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.attentions.1.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.0.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.0.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.0.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.0.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.0.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.0.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.1.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.1.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.1.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.1.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.1.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.1.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.1.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.1.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.1.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.resnets.1.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.downsamplers.0.conv.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.0.downsamplers.0.conv.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.norm.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.norm.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.0.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.norm.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.norm.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.attentions.1.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.0.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.0.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.0.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.0.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.0.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.0.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.0.conv_shortcut.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.0.conv_shortcut.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.1.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.1.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.1.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.1.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.1.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.1.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.1.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.1.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.1.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.resnets.1.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.downsamplers.0.conv.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.1.downsamplers.0.conv.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.norm.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.norm.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.0.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.norm.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.norm.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.attentions.1.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.0.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.0.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.0.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.0.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.0.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.0.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.0.conv_shortcut.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.0.conv_shortcut.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.1.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.1.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.1.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.1.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.1.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.1.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.1.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.1.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.1.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.resnets.1.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.downsamplers.0.conv.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.2.downsamplers.0.conv.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.0.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.0.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.0.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.0.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.0.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.0.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.1.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.1.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.1.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.1.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.1.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.1.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.1.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.1.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.1.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is down_blocks.3.resnets.1.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.0.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.0.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.0.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.0.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.0.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.0.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.0.conv_shortcut.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.0.conv_shortcut.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.1.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.1.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.1.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.1.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.1.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.1.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.1.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.1.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.1.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.1.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.1.conv_shortcut.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.1.conv_shortcut.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.2.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.2.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.2.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.2.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.2.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.2.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.2.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.2.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.2.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.2.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.2.conv_shortcut.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.resnets.2.conv_shortcut.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.upsamplers.0.conv.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.0.upsamplers.0.conv.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.norm.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.norm.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.0.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.norm.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.norm.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.1.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.norm.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.norm.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.attentions.2.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.0.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.0.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.0.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.0.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.0.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.0.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.0.conv_shortcut.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.0.conv_shortcut.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.1.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.1.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.1.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.1.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.1.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.1.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.1.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.1.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.1.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.1.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.1.conv_shortcut.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.1.conv_shortcut.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.2.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.2.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.2.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.2.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.2.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.2.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.2.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.2.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.2.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.2.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.2.conv_shortcut.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.resnets.2.conv_shortcut.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.upsamplers.0.conv.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.1.upsamplers.0.conv.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.norm.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.norm.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.0.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.norm.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.norm.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.1.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.norm.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.norm.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.attentions.2.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.0.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.0.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.0.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.0.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.0.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.0.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.0.conv_shortcut.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.0.conv_shortcut.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.1.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.1.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.1.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.1.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.1.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.1.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.1.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.1.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.1.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.1.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.1.conv_shortcut.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.1.conv_shortcut.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.2.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.2.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.2.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.2.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.2.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.2.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.2.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.2.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.2.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.2.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.2.conv_shortcut.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.resnets.2.conv_shortcut.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.upsamplers.0.conv.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.2.upsamplers.0.conv.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.norm.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.norm.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.0.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.norm.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.norm.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.1.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.norm.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.norm.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.attentions.2.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.0.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.0.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.0.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.0.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.0.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.0.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.0.conv_shortcut.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.0.conv_shortcut.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.1.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.1.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.1.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.1.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.1.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.1.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.1.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.1.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.1.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.1.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.1.conv_shortcut.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.1.conv_shortcut.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.2.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.2.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.2.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.2.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.2.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.2.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.2.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.2.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.2.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.2.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.2.conv_shortcut.weight
+architecture.py - CubeDiffModel - base_unet name is up_blocks.3.resnets.2.conv_shortcut.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.norm.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.norm.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.proj_in.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.proj_in.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.attn1.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.attn1.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.attn1.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.attn1.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.attn1.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.attn2.to_q.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.attn2.to_k.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.attn2.to_v.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.attn2.to_out.0.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.attn2.to_out.0.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.norm3.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.norm3.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.ff.net.0.proj.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.ff.net.0.proj.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.ff.net.2.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.transformer_blocks.0.ff.net.2.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.proj_out.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.attentions.0.proj_out.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.0.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.0.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.0.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.0.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.0.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.0.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.0.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.0.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.0.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.0.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.1.norm1.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.1.norm1.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.1.conv1.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.1.conv1.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.1.time_emb_proj.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.1.time_emb_proj.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.1.norm2.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.1.norm2.bias
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.1.conv2.weight
+architecture.py - CubeDiffModel - base_unet name is mid_block.resnets.1.conv2.bias
+architecture.py - CubeDiffModel - base_unet name is conv_norm_out.weight
+architecture.py - CubeDiffModel - base_unet name is conv_norm_out.bias
+architecture.py - CubeDiffModel - base_unet name is conv_out.weight
+architecture.py - CubeDiffModel - base_unet name is conv_out.bias
+architecture.py - CubeDiffModel - Inflating down_blocks.0.attentions.0.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (320, 320)
+attention.py - Detected self-attention: query_dim=320, ctx_dim=320
+architecture.py - CubeDiffModel - Replaced base_unet down_blocks.0.attentions.0.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating down_blocks.0.attentions.0.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (320, 320)
+attention.py - Detected cross-attention: query_dim=320, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet down_blocks.0.attentions.0.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - Inflating down_blocks.0.attentions.1.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (320, 320)
+attention.py - Detected self-attention: query_dim=320, ctx_dim=320
+architecture.py - CubeDiffModel - Replaced base_unet down_blocks.0.attentions.1.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating down_blocks.0.attentions.1.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (320, 320)
+attention.py - Detected cross-attention: query_dim=320, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet down_blocks.0.attentions.1.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - Inflating down_blocks.1.attentions.0.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (640, 640)
+attention.py - Detected self-attention: query_dim=640, ctx_dim=640
+architecture.py - CubeDiffModel - Replaced base_unet down_blocks.1.attentions.0.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating down_blocks.1.attentions.0.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (640, 640)
+attention.py - Detected cross-attention: query_dim=640, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet down_blocks.1.attentions.0.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - Inflating down_blocks.1.attentions.1.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (640, 640)
+attention.py - Detected self-attention: query_dim=640, ctx_dim=640
+architecture.py - CubeDiffModel - Replaced base_unet down_blocks.1.attentions.1.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating down_blocks.1.attentions.1.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (640, 640)
+attention.py - Detected cross-attention: query_dim=640, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet down_blocks.1.attentions.1.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - Inflating down_blocks.2.attentions.0.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (1280, 1280)
+attention.py - Detected self-attention: query_dim=1280, ctx_dim=1280
+architecture.py - CubeDiffModel - Replaced base_unet down_blocks.2.attentions.0.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating down_blocks.2.attentions.0.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (1280, 1280)
+attention.py - Detected cross-attention: query_dim=1280, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet down_blocks.2.attentions.0.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - Inflating down_blocks.2.attentions.1.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (1280, 1280)
+attention.py - Detected self-attention: query_dim=1280, ctx_dim=1280
+architecture.py - CubeDiffModel - Replaced base_unet down_blocks.2.attentions.1.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating down_blocks.2.attentions.1.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (1280, 1280)
+attention.py - Detected cross-attention: query_dim=1280, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet down_blocks.2.attentions.1.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.1.attentions.0.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (1280, 1280)
+attention.py - Detected self-attention: query_dim=1280, ctx_dim=1280
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.1.attentions.0.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.1.attentions.0.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (1280, 1280)
+attention.py - Detected cross-attention: query_dim=1280, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.1.attentions.0.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.1.attentions.1.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (1280, 1280)
+attention.py - Detected self-attention: query_dim=1280, ctx_dim=1280
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.1.attentions.1.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.1.attentions.1.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (1280, 1280)
+attention.py - Detected cross-attention: query_dim=1280, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.1.attentions.1.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.1.attentions.2.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (1280, 1280)
+attention.py - Detected self-attention: query_dim=1280, ctx_dim=1280
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.1.attentions.2.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.1.attentions.2.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (1280, 1280)
+attention.py - Detected cross-attention: query_dim=1280, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.1.attentions.2.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.2.attentions.0.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (640, 640)
+attention.py - Detected self-attention: query_dim=640, ctx_dim=640
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.2.attentions.0.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.2.attentions.0.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (640, 640)
+attention.py - Detected cross-attention: query_dim=640, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.2.attentions.0.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.2.attentions.1.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (640, 640)
+attention.py - Detected self-attention: query_dim=640, ctx_dim=640
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.2.attentions.1.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.2.attentions.1.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (640, 640)
+attention.py - Detected cross-attention: query_dim=640, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.2.attentions.1.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.2.attentions.2.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (640, 640)
+attention.py - Detected self-attention: query_dim=640, ctx_dim=640
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.2.attentions.2.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.2.attentions.2.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (640, 640)
+attention.py - Detected cross-attention: query_dim=640, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.2.attentions.2.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.3.attentions.0.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (320, 320)
+attention.py - Detected self-attention: query_dim=320, ctx_dim=320
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.3.attentions.0.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.3.attentions.0.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (320, 320)
+attention.py - Detected cross-attention: query_dim=320, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.3.attentions.0.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.3.attentions.1.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (320, 320)
+attention.py - Detected self-attention: query_dim=320, ctx_dim=320
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.3.attentions.1.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.3.attentions.1.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (320, 320)
+attention.py - Detected cross-attention: query_dim=320, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.3.attentions.1.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.3.attentions.2.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (320, 320)
+attention.py - Detected self-attention: query_dim=320, ctx_dim=320
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.3.attentions.2.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating up_blocks.3.attentions.2.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (320, 320)
+attention.py - Detected cross-attention: query_dim=320, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet up_blocks.3.attentions.2.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - Inflating mid_block.attentions.0.transformer_blocks.0.attn1
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (1280, 1280)
+attention.py - Detected self-attention: query_dim=1280, ctx_dim=1280
+architecture.py - CubeDiffModel - Replaced base_unet mid_block.attentions.0.transformer_blocks.0.attn1 with inflated_layer
+architecture.py - CubeDiffModel - Inflating mid_block.attentions.0.transformer_blocks.0.attn2
+attention.py - skip_copy is False - ✅ Inflating attention @ Attention,               copying pretrained q‐weight shape (1280, 1280)
+attention.py - Detected cross-attention: query_dim=1280, ctx_dim=768
+architecture.py - CubeDiffModel - Replaced base_unet mid_block.attentions.0.transformer_blocks.0.attn2 with inflated_layer
+architecture.py - CubeDiffModel - ___init__ - [DEBUG] total_inflated_params: 93536640 (93.5366 million)
+architecture.py - CubeDiffModel - Inflated layer module: down_blocks.0.attentions.0.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: down_blocks.0.attentions.0.transformer_blocks.0.attn2
+architecture.py - CubeDiffModel - Inflated layer module: down_blocks.0.attentions.1.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: down_blocks.0.attentions.1.transformer_blocks.0.attn2
+architecture.py - CubeDiffModel - Inflated layer module: down_blocks.1.attentions.0.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: down_blocks.1.attentions.0.transformer_blocks.0.attn2
+architecture.py - CubeDiffModel - Inflated layer module: down_blocks.1.attentions.1.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: down_blocks.1.attentions.1.transformer_blocks.0.attn2
+architecture.py - CubeDiffModel - Inflated layer module: down_blocks.2.attentions.0.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: down_blocks.2.attentions.0.transformer_blocks.0.attn2
+architecture.py - CubeDiffModel - Inflated layer module: down_blocks.2.attentions.1.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: down_blocks.2.attentions.1.transformer_blocks.0.attn2
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.1.attentions.0.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.1.attentions.0.transformer_blocks.0.attn2
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.1.attentions.1.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.1.attentions.1.transformer_blocks.0.attn2
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.1.attentions.2.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.1.attentions.2.transformer_blocks.0.attn2
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.2.attentions.0.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.2.attentions.0.transformer_blocks.0.attn2
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.2.attentions.1.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.2.attentions.1.transformer_blocks.0.attn2
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.2.attentions.2.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.2.attentions.2.transformer_blocks.0.attn2
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.3.attentions.0.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.3.attentions.0.transformer_blocks.0.attn2
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.3.attentions.1.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.3.attentions.1.transformer_blocks.0.attn2
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.3.attentions.2.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: up_blocks.3.attentions.2.transformer_blocks.0.attn2
+architecture.py - CubeDiffModel - Inflated layer module: mid_block.attentions.0.transformer_blocks.0.attn1
+architecture.py - CubeDiffModel - Inflated layer module: mid_block.attentions.0.transformer_blocks.0.attn2
+
+=== Inflated-Attention Layers ===
+archtecture.py - __init__  - unet -  ✅ down_blocks.0.attentions.0.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=320, out_features=320, bias=False)
+  (to_v): Linear(in_features=320, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ down_blocks.0.attentions.0.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=768, out_features=320, bias=False)
+  (to_v): Linear(in_features=768, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ down_blocks.0.attentions.1.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=320, out_features=320, bias=False)
+  (to_v): Linear(in_features=320, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ down_blocks.0.attentions.1.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=768, out_features=320, bias=False)
+  (to_v): Linear(in_features=768, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ down_blocks.1.attentions.0.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=640, out_features=640, bias=False)
+  (to_v): Linear(in_features=640, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ down_blocks.1.attentions.0.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=768, out_features=640, bias=False)
+  (to_v): Linear(in_features=768, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ down_blocks.1.attentions.1.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=640, out_features=640, bias=False)
+  (to_v): Linear(in_features=640, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ down_blocks.1.attentions.1.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=768, out_features=640, bias=False)
+  (to_v): Linear(in_features=768, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ down_blocks.2.attentions.0.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_v): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ down_blocks.2.attentions.0.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=768, out_features=1280, bias=False)
+  (to_v): Linear(in_features=768, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ down_blocks.2.attentions.1.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_v): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ down_blocks.2.attentions.1.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=768, out_features=1280, bias=False)
+  (to_v): Linear(in_features=768, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.1.attentions.0.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_v): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.1.attentions.0.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=768, out_features=1280, bias=False)
+  (to_v): Linear(in_features=768, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.1.attentions.1.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_v): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.1.attentions.1.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=768, out_features=1280, bias=False)
+  (to_v): Linear(in_features=768, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.1.attentions.2.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_v): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.1.attentions.2.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=768, out_features=1280, bias=False)
+  (to_v): Linear(in_features=768, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.2.attentions.0.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=640, out_features=640, bias=False)
+  (to_v): Linear(in_features=640, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.2.attentions.0.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=768, out_features=640, bias=False)
+  (to_v): Linear(in_features=768, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.2.attentions.1.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=640, out_features=640, bias=False)
+  (to_v): Linear(in_features=640, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.2.attentions.1.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=768, out_features=640, bias=False)
+  (to_v): Linear(in_features=768, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.2.attentions.2.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=640, out_features=640, bias=False)
+  (to_v): Linear(in_features=640, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.2.attentions.2.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=640, out_features=640, bias=False)
+  (to_k): Linear(in_features=768, out_features=640, bias=False)
+  (to_v): Linear(in_features=768, out_features=640, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=640, out_features=640, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.3.attentions.0.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=320, out_features=320, bias=False)
+  (to_v): Linear(in_features=320, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.3.attentions.0.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=768, out_features=320, bias=False)
+  (to_v): Linear(in_features=768, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.3.attentions.1.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=320, out_features=320, bias=False)
+  (to_v): Linear(in_features=320, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.3.attentions.1.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=768, out_features=320, bias=False)
+  (to_v): Linear(in_features=768, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.3.attentions.2.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=320, out_features=320, bias=False)
+  (to_v): Linear(in_features=320, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ up_blocks.3.attentions.2.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=320, out_features=320, bias=False)
+  (to_k): Linear(in_features=768, out_features=320, bias=False)
+  (to_v): Linear(in_features=768, out_features=320, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=320, out_features=320, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ mid_block.attentions.0.transformer_blocks.0.attn1: InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_v): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+archtecture.py - __init__  - unet -  ✅ mid_block.attentions.0.transformer_blocks.0.attn2: InflatedAttention(
+  (to_q): Linear(in_features=1280, out_features=1280, bias=False)
+  (to_k): Linear(in_features=768, out_features=1280, bias=False)
+  (to_v): Linear(in_features=768, out_features=1280, bias=False)
+  (to_out): Sequential(
+    (0): Linear(in_features=1280, out_features=1280, bias=True)
+    (1): Dropout(p=0.0, inplace=False)
+  )
+)
+=== End inflated list ===
+
+architecture.py - CubeDiffModel - Replacing GroupNorms in UNet for color consistency
+architecture.py - CubeDiffModel - init - Replaced 61 GroupNorm layers with SGN in UNet
+Loading CLIP tokenizer & text encoder…
+Loading CLIP tokenizer done
+Loading CLIP text encode done
+Loading Scheduler done
+✅ CubeDiffPipeline initialized.
+Explicitly moved positional_encoding to cuda:0
+Running warmup forward pass...
+✗ Warmup failed: Current CUDA Device does not support bfloat16. Please switch dtype to float16.
+Debugging device locations:
+  fake_latents.device: cuda:0
+  fake_timesteps.device: cuda:0
+  fake_txt_emb.device: cuda:0
+  model device: cuda:0
+  face_emb device: cuda:0

@@ -65,38 +65,18 @@ from accelerate import Accelerator
 from accelerate.utils import set_seed, DistributedDataParallelKwargs, DeepSpeedPlugin
 # from diffusers import StableDiffusionPipeline
 
-from data.latent_webdataset import get_dataloader
-from model.architecture   import CubeDiffModel
+from cl.data.latent_webdataset import get_dataloader
+from cl.model.architecture   import CubeDiffModel
 
 from diffusers import UNet2DConditionModel, DDPMScheduler # DDIMScheduler # DPMSolverMultistepScheduler # EulerAncestralDiscreteScheduler
 # from transformers import get_cosine_schedule_with_warmup, get_wsd_schedule # (2025-5-18 this made LR be exactly 0 after 29 steps, why ?)
 import tarfile
 
-from inference.pipeline import CubeDiffPipeline
-from model.normalization import replace_group_norms
+from cl.inference.pipeline import CubeDiffPipeline
+from cl.model.normalization import replace_group_norms
 
 import tarfile, io, torch
 from torch.utils.data import TensorDataset
-
-# Disable FlashAttention/CUTLASS and force PyTorch SDPA because:
-# diffusers >= 0.25 + transformers >= 4.35 now use:
-# scaled_dot_product_attention (SDPA) with Flash/CUTLASS backends
-# L4 GPU does not have a kernel implementation for the requested attention mode.
-                                                 
-import os
-os.environ["PYTORCH_CUDA_ALLOW_FP16_REDUCED_PRECISION_REDUCTION"] = "1"
-os.environ["ATTENTION_BACKEND"] = "SDPA"
-os.environ["USE_FLASH_ATTENTION"] = "0"
-os.environ["USE_MEMORY_EFFICIENT_ATTENTION"] = "0"
-os.environ["PYTORCH_SDPA_ENABLE_FLASH"] = "0"
-os.environ["PYTORCH_SDPA_ALLOW_FLASH"] = "0"
-os.environ["PYTORCH_SDPA_ALLOW_MEM_EFFICIENT"] = "0"
-os.environ["PYTORCH_SDPA_FORCE_FALLBACK"] = "1"
-
-import torch
-torch.backends.cuda.enable_flash_sdp(False)
-torch.backends.cuda.enable_mem_efficient_sdp(False)
-torch.backends.cuda.enable_math_sdp(True)
 
 
 def load_tar_to_dataset(tar_path: str):

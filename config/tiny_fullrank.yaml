@@ -13,8 +13,8 @@ learning_rate:     8.0e-5 # 5.0e-6 # 2.0e-5  # lower peak LR for stable converge
 mixed_precision: bf16 # fp16
 
 # --- training ---------------------------------------------
-max_train_steps:    30000 # 30000  # total gradient‐update iterations (batch 64) per paper
-eval_cycle: 400 # 200 # 100 # 50 # run evaluation (save deepspeed_ckpt_step; get global_loss for all-reduce ranks and collect train loss and generate_samples for rank==0; run self.evaluate for all ranks) if gsteps%eval_cycle == 0
+max_train_steps:    1 # 30000 # 30000  # total gradient‐update iterations (batch 64) per paper
+eval_cycle: 1 # 400 # 200 # 100 # 50 # run evaluation (save deepspeed_ckpt_step; get global_loss for all-reduce ranks and collect train loss and generate_samples for rank==0; run self.evaluate for all ranks) if gsteps%eval_cycle == 0
 warmup_ratio:  0.03 # 0.1 # 0.3333 # 0.03 # 0.33  # 0.1
 plateau_ratio: 0
 

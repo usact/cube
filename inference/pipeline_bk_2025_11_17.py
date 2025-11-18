@@ -8,9 +8,9 @@ from transformers import CLIPTokenizer, CLIPTextModel
 from diffusers import UNet2DConditionModel, AutoencoderKL, DDPMScheduler # DDIMScheduler # DPMSolverMultistepScheduler # EulerAncestralDiscreteScheduler
 from transformers import CLIPTokenizer, CLIPTextModel
 
-from data.preprocessing import cubemap_to_equirect
-from model.architecture import CubeDiffModel # contains inflated‐attention U-Net + SyncBN
-from model.normalization import replace_group_norms
+from cl.data.preprocessing import cubemap_to_equirect
+from cl.model.architecture import CubeDiffModel # contains inflated‐attention U-Net + SyncBN
+from cl.model.normalization import replace_group_norms
 
 # Face adjacency map for a standard cubemap
 _FACE_ADJ = {

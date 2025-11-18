@@ -23,9 +23,9 @@ except ImportError:
     from diffusers.models.attention import Attention   as Original2DAttention  # fallback for older versions :contentReference[oaicite:0]{index=0}
 
 
-from model.positional_encoding import CubemapPositionalEncoding
-from model.attention        import inflate_attention_layer
-from model.normalization    import replace_group_norms
+from cl.model.positional_encoding import CubemapPositionalEncoding
+from cl.model.attention        import inflate_attention_layer
+from cl.model.normalization    import replace_group_norms
 from transformers import BitsAndBytesConfig
 
 
