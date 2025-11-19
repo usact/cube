@@ -1,8 +1,8 @@
 #  configure for fine-tuning of CubeDiff “tiny” model – 700 panoramas
 # --- data --------------------------------------------------
 
-dataset: "/home/jupyter/mluser/git/llm-cv-pano-cubediff/cl/data/dataspace/polyhaven_tiny_13_new_pt/cubediff_train.tar"
-val_dataset: "/home/jupyter/mluser/git/llm-cv-pano-cubediff/cl/data/dataspace/polyhaven_tiny_13_new_pt/cubediff_val.tar"
+dataset: "/home/jupyter/mluser/git/cube/data/dataspace/polyhaven_tiny/cubediff_train.tar"
+val_dataset: "/home/jupyter/mluser/git/cube/data/dataspace/polyhaven_tiny/cubediff_val.tar"
 batch_size:    2 # 8 # 4         # per GPU process 
 eval_batch_size: 2
 num_workers:   10 # 8 # 4 # 8  # bump these to drive more CPU‐side throughput       

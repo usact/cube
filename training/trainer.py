@@ -326,6 +326,7 @@ class CubeDiffTrainer:
         # get CLIP socre for pano image and text prompt 
         # 1) Try loading CLIPProcessor from local cache, else fall back to Hub
         CACHE = Path.home() / ".cache/huggingface/hub/models--openai--clip-vit-base-patch32/snapshots"
+        print(f"train.py - Try loading CLIPProcessor from local cache snapshots : {CACHE}")
         def _find_snapshot(use_safetensors: bool) -> str:
             want = "model.safetensors" if use_safetensors else "pytorch_model.bin"
             for rev in CACHE.iterdir():
@@ -334,19 +335,19 @@ class CubeDiffTrainer:
             raise FileNotFoundError(f"no snapshot with {want}")
         
         model_path = _find_snapshot(self.use_safetensors)
-        
+        print(f"trainer.py - Try loading CLIPProcessor from local cache subfolder: {model_path}")
         try:
             self.clip_processor = CLIPProcessor.from_pretrained(
                 model_path, # "openai/clip-vit-base-patch32",
                 local_files_only=True,
-                # use_fast=True,    
+                use_fast=False, #True,    
             )            
             print("trainer.py - ✅ Loaded CLIPProcessor from local cache")
         except Exception as e:
             print(f"trainer.py - ⚠️ CLIPProcessor cache load failed ({e}), downloading…")
             self.clip_processor = CLIPProcessor.from_pretrained(
                 "openai/clip-vit-base-patch32",
-                # use_fast=True,    
+                use_fast=False, # True,    
             )
         # 2) Try loading CLIPModel (safetensors) from cache, else fall back
         try:
