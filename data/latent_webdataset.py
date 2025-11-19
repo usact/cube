@@ -74,18 +74,20 @@ def preprocess(sample: dict, rank: int) -> dict:
         npz_key = next((k for k in sample if k.endswith(".npz")), None)
         if npz_key:
             # Load from memory-mapped npz
+            print(f"latent_webdataset.py - [rank {rank}] Loading embeddings from memory-mapped .npz: {npz_key}")
             npz_bytes = io.BytesIO(sample[npz_key])
             with np.load(npz_bytes) as data:
                 encoder_hidden_states = torch.from_numpy(data['encoder_hidden_states'])
                 attention_mask = torch.from_numpy(data['attention_mask'])
         else:
             # Fallback to .emb/.pt format
+            print("latent_webdataset.py - [rank {rank}] Loading encoder_hidden_states and attention_mask from .emb format")
             emb_key = next(k for k in sample if k.endswith(".emb"))
             embed_data = torch.load(io.BytesIO(sample[emb_key]))
             encoder_hidden_states = embed_data['encoder_hidden_states']
             attention_mask = embed_data['attention_mask']
     except Exception as e:
-        print(f"❌ [rank {rank}] Failed to load embeddings and attention mask; keys={list(sample.keys())}; error: {e}")
+        print(f"latent_webdataset.py - ❌ [rank {rank}] Failed to load embeddings and attention mask; keys={list(sample.keys())}; error: {e}")
         raise ValueError(f"rank {rank} - latent_webdataset.py - preprocess - Failed to load embeddings and attn mask due to error : {e}")
     
     # 4) Sanity checks: everything must be a Tensor now
@@ -220,6 +222,7 @@ def get_dataloader(
     print(f"[latent_webdataset] rank={rank} loading {len(samples_raw)} raw samples")
     for sid, raw in samples_raw.items():
         try:
+            print(f"latent_webdataset.py - 📝 [rank={rank}] loading {sid} from raw samples with raw size {len(raw)} bytes")
             proc = preprocess(raw, rank)  # your existing function
             all_valid.append(proc)
         except Exception as e:
