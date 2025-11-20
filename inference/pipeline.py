@@ -312,4 +312,4 @@ class CubeDiffPipeline:
         # 6) Project via the unchanged cubemap_to_equirect
         cube_np = torch.stack(faces, 0).numpy()
         pano = cubemap_to_equirect(cube_np, self.height*2, self.width*4)
-        return pano
+        return pano.permute(1,2,0)  # [He,We,3]

@@ -84,19 +84,19 @@ from torch.utils.data import TensorDataset
 # L4 GPU does not have a kernel implementation for the requested attention mode.
                                                  
 import os
-os.environ["PYTORCH_CUDA_ALLOW_FP16_REDUCED_PRECISION_REDUCTION"] = "1"
-os.environ["ATTENTION_BACKEND"] = "SDPA"
-os.environ["USE_FLASH_ATTENTION"] = "0"
-os.environ["USE_MEMORY_EFFICIENT_ATTENTION"] = "0"
-os.environ["PYTORCH_SDPA_ENABLE_FLASH"] = "0"
-os.environ["PYTORCH_SDPA_ALLOW_FLASH"] = "0"
-os.environ["PYTORCH_SDPA_ALLOW_MEM_EFFICIENT"] = "0"
-os.environ["PYTORCH_SDPA_FORCE_FALLBACK"] = "1"
+# os.environ["PYTORCH_CUDA_ALLOW_FP16_REDUCED_PRECISION_REDUCTION"] = "1"
+# os.environ["ATTENTION_BACKEND"] = "SDPA"
+# os.environ["USE_FLASH_ATTENTION"] = "0"
+# os.environ["USE_MEMORY_EFFICIENT_ATTENTION"] = "0"
+# os.environ["PYTORCH_SDPA_ENABLE_FLASH"] = "0"
+# os.environ["PYTORCH_SDPA_ALLOW_FLASH"] = "0"
+# os.environ["PYTORCH_SDPA_ALLOW_MEM_EFFICIENT"] = "0"
+# os.environ["PYTORCH_SDPA_FORCE_FALLBACK"] = "1"
 
 import torch
-torch.backends.cuda.enable_flash_sdp(False)
-torch.backends.cuda.enable_mem_efficient_sdp(False)
-torch.backends.cuda.enable_math_sdp(True)
+# torch.backends.cuda.enable_flash_sdp(False)
+# torch.backends.cuda.enable_mem_efficient_sdp(False)
+# torch.backends.cuda.enable_math_sdp(True)
 
 
 def load_tar_to_dataset(tar_path: str):
@@ -1270,7 +1270,9 @@ class CubeDiffTrainer:
         print(f"\t\t[rank {rank}] denoised in {gen_time:.3f}s")
 
         # Retrieve PIL.Image
-        pano_image = Image.fromarray((pano*255).astype("uint8"))
+        print("\t\t[rank 0], trainer.py, pano shape =", pano.shape, "dtype=", pano.dtype)
+        # pano_image = Image.fromarray((pano*255).astype("uint8"))
+        pano_image = Image.fromarray((pano * 255).to(torch.uint8).cpu().numpy())
 
         # compute CLIP similarity to the prompt
         inputs = self.clip_processor(

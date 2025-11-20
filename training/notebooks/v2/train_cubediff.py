@@ -46,25 +46,43 @@ else:
 import os
 
 # Disable FlashAttention and Memory-Efficient SDPA (required on L4)
-os.environ["ATTENTION_BACKEND"] = "SDPA"
-os.environ["USE_FLASH_ATTENTION"] = "0"
-os.environ["USE_MEMORY_EFFICIENT_ATTENTION"] = "0"
+# os.environ["ATTENTION_BACKEND"] = "SDPA"
+# os.environ["USE_FLASH_ATTENTION"] = "0"
+# os.environ["USE_MEMORY_EFFICIENT_ATTENTION"] = "0"
 
+# os.environ["PYTORCH_SDPA_ENABLE_FLASH"] = "0"
+# os.environ["PYTORCH_SDPA_ALLOW_FLASH"] = "0"
+# os.environ["PYTORCH_SDPA_ALLOW_MEM_EFFICIENT"] = "0"
+# os.environ["PYTORCH_SDPA_FORCE_FALLBACK"] = "1"
+
+# os.environ["PYTORCH_CUDA_ALLOW_FP16_REDUCED_PRECISION_REDUCTION"] = "1"
+
+# import torch
+# torch.backends.cuda.enable_flash_sdp(False)
+# torch.backends.cuda.enable_mem_efficient_sdp(False)
+# torch.backends.cuda.enable_math_sdp(True)
+
+os.environ["ATTENTION_BACKEND"] = "SDPA"
+
+os.environ["USE_FLASH_ATTENTION"] = "0"
+os.environ["USE_MEMORY_EFFICIENT_ATTENTION"] = "1"
+
+# Disable Flash SDPA (not supported on L4)
 os.environ["PYTORCH_SDPA_ENABLE_FLASH"] = "0"
 os.environ["PYTORCH_SDPA_ALLOW_FLASH"] = "0"
-os.environ["PYTORCH_SDPA_ALLOW_MEM_EFFICIENT"] = "0"
-os.environ["PYTORCH_SDPA_FORCE_FALLBACK"] = "1"
 
-os.environ["PYTORCH_CUDA_ALLOW_FP16_REDUCED_PRECISION_REDUCTION"] = "1"
+# Disable Math SDPA (worst for memory)
+os.environ["PYTORCH_SDPA_ENABLE_MATH"] = "0"
+os.environ["PYTORCH_SDPA_ALLOW_MATH"] = "0"
 
-import torch
-torch.backends.cuda.enable_flash_sdp(False)
-torch.backends.cuda.enable_mem_efficient_sdp(False)
-torch.backends.cuda.enable_math_sdp(True)
+# Enable MemEff SDPA (works on L4)
+os.environ["PYTORCH_SDPA_ALLOW_MEM_EFFICIENT"] = "1"
+os.environ["PYTORCH_SDPA_ENABLE_MEM_EFFICIENT"] = "1"
+os.environ["PYTORCH_SDPA_FORCE_FALLBACK"] = "0"
 
-print("Flash SDPA:", torch.backends.cuda.flash_sdp_enabled())
-print("MemEff SDPA:", torch.backends.cuda.mem_efficient_sdp_enabled())
-print("Math SDPA:", torch.backends.cuda.math_sdp_enabled())
+# xFormers (BEST for UNet)
+os.environ["XFORMERS_ATTENTION_BACKEND"] = "xformers"
+os.environ["USE_XFORMERS"] = "1"
 
 # ------------------------------------------------------------------------------
 import torch
@@ -75,6 +93,16 @@ torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.benchmark = True
 torch.backends.cudnn.allow_tf32 = True
 
+torch.backends.cuda.enable_flash_sdp(False)
+torch.backends.cuda.enable_mem_efficient_sdp(True)
+torch.backends.cuda.enable_math_sdp(False)
+
+
+print("Flash SDPA:", torch.backends.cuda.flash_sdp_enabled())
+print("MemEff SDPA:", torch.backends.cuda.mem_efficient_sdp_enabled())
+print("Math SDPA:", torch.backends.cuda.math_sdp_enabled())
+
+# ------------------------------------------------------------------------------
 # import ctypes
 # adjust to your actual path if needed
 # ctypes.CDLL("/usr/local/nvidia/lib64/libcuda.so", mode=ctypes.RTLD_GLOBAL)
