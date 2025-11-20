@@ -1,0 +1,5 @@
+2025-11-19 
+use this to sync two folders: rsync -a --exclude='.git' cube/ cube_copy/
+the user name and email should be different for two folders
+after installing gh, used "gh auth logout" and "gh auth login" at cube_copy/ to set user name and user email that are allowed to access the new repo. During the process, it may need to select protocol ("HTTPS"), and authorization method ("wbe browser"). Also, the CLI terminal may generate some device code e.g. xxxx-xxxx that should be input for the web browser authorization.
+  
