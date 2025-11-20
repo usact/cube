@@ -299,7 +299,10 @@ def cubemap_to_equirect(faces: torch.Tensor, overlap: int = 8, sigma: float = 4.
     He, We = Hf, Wf * 6
     theta = torch.linspace(-math.pi, math.pi, We, device=device, dtype=dtype)
     phi   = torch.linspace(0, math.pi,      He, device=device, dtype=dtype)
-    th, ph = torch.meshgrid(theta, phi, indexing="xy")   # (We,He)
+    # th, ph = torch.meshgrid(theta, phi, indexing="xy")   # (We,He)
+    # vertical coordinate = phi (H)
+    # horizontal = theta (W)
+    th, ph = torch.meshgrid(phi, theta, indexing="ij")  # (He,We)
 
     # from spherical to Cartesian
     x = torch.sin(ph)*torch.cos(th)
@@ -325,7 +328,8 @@ def cubemap_to_equirect(faces: torch.Tensor, overlap: int = 8, sigma: float = 4.
         mask = (face_idx == f).view(He, We)
         pano[:, mask] = sampled[f][:, mask]
 
-    return pano.permute(1,2,0)  # [He,We,3]
+    # return pano.permute(1,2,0)  # [He,We,3]
+    return pano.permute(1,2,0).contiguous() # [H,W,3]
     
 
 import os
