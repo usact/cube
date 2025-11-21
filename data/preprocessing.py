@@ -296,7 +296,11 @@ def cubemap_to_equirect(faces: torch.Tensor, overlap: int = 8, sigma: float = 4.
     _, C, Hf, Wf = faces.shape
 
     # target equirect dims
-    He, We = Hf, Wf * 6
+    # CubeDiff paper: equirectangular panorama must be [2H, 4W]
+    # Faces are [H, W] = [512, 512], so output must be [1024, 2048].
+    # He, We = Hf, Wf * 6
+    He, We = Hf * 2, Wf * 4
+    
     theta = torch.linspace(-math.pi, math.pi, We, device=device, dtype=dtype)
     phi   = torch.linspace(0, math.pi,      He, device=device, dtype=dtype)
     # th, ph = torch.meshgrid(theta, phi, indexing="xy")   # (We,He)
