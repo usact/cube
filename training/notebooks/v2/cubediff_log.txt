@@ -1682,7 +1682,7 @@ trainer.py - ✅ Loaded CLIPModel from local cache (safetensors) use_safetensors
   ▶ Val   samples: 70
 trainer.py - CubeDiffTrainer - __init__ - train data -                 self.train_size is 630, max_train_steps (total_updates) is 1,                 epochs_per_trn_datasize is 79, total_steps is 1,                  self.total_required_samples is 8,                 world_size is 1, batch_size is 2, micro_batch_size is 2,                 batch_num_per_rank is 315, samples_per_rank is 630,                 accum_steps is 4, accum_batch_size_per_rank is 8,                 sample_size_per_update_step (actual batch size for gradients update) is 8, eval_cycle is 1
 
-train_cubediff.py - trainer is <training.trainer.CubeDiffTrainer object at 0x7fcb687b9660>
+train_cubediff.py - trainer is <training.trainer.CubeDiffTrainer object at 0x7f5a0c860340>
 trainer.py - CubeDiffTrainer - Building dataloaders with config: {'dataset': '/home/jupyter/mluser/git/cube/data/dataspace/polyhaven_tiny_13_new_pt/cubediff_train.tar', 'val_dataset': '/home/jupyter/mluser/git/cube/data/dataspace/polyhaven_tiny_13_new_pt/cubediff_val.tar', 'batch_size': 2, 'eval_batch_size': 2, 'num_workers': 10, 'gradient_accum_steps': 4, 'learning_rate': 8e-05, 'mixed_precision': 'bf16', 'max_train_steps': 1, 'eval_cycle': 1, 'warmup_ratio': 0.03, 'plateau_ratio': 0, 'use_wandb': False, 'output_dir': 'outputs/cubediff_tiny_lora', 'seed': 1337, 'skip_weight_copy': False}
 [latent_webdataset] rank=0 loading 630 raw samples
 latent_webdataset.py - 📝 [rank=0] loading abandoned_factory_canteen_01.abandoned_factory_canteen_01 from raw samples with raw size 3 bytes
@@ -3114,41 +3114,41 @@ trainer.py - CubeDiffTrainer - train - sample_prompts is ['A beautiful mountain 
 
 ▶️ rank 0 - Starting gstep 0/1
 	Rank 0 - gstep 0 - batch_indx 0 - lat shape is torch.Size([2, 6, 4, 64, 64]), txt_emb shape is torch.Size([2, 77, 768]), mask shape is torch.Size([2, 77])
-	Rank 0 - gstep 0 - batch_indx 0 - noisy_lat shape is torch.Size([2, 6, 4, 64, 64]), prediction done, cost 3.7439 seconds
+	Rank 0 - gstep 0 - batch_indx 0 - noisy_lat shape is torch.Size([2, 6, 4, 64, 64]), prediction done, cost 3.5570 seconds
 	rank0 - gstep 0 - batch_indx 0 - check noise std mean - noise std: 1.0   mean: 0.00262451171875
-	rank0 - gstep 0 - batch_indx 0 - check pred std mean  - pred std: 0.2248857617378235   mean: 0.006514201872050762
-	Rank 0 - gstep 0 - batch_indx 0 - backward done, cost 5.03 seconds - loss type is <class 'torch.Tensor'> shape is torch.Size([]), loss is 1.0464203357696533 
-	Rank 0 - gstep 0 - out of accumulate - batch_indx 0 cost 8.93 seconds, before waiting for all ranks to finish accumulate ...
+	rank0 - gstep 0 - batch_indx 0 - check pred std mean  - pred std: 0.22486841678619385   mean: 0.006510564591735601
+	Rank 0 - gstep 0 - batch_indx 0 - backward done, cost 5.16 seconds - loss type is <class 'torch.Tensor'> shape is torch.Size([]), loss is 1.0464096069335938 
+	Rank 0 - gstep 0 - out of accumulate - batch_indx 0 cost 8.88 seconds, before waiting for all ranks to finish accumulate ...
 	Rank 0 - gstep 0 - out of accumulate - batch_indx 0 after waiting for all ranks to finish accumulate, cost 0.00 seconds, real_sample_size_per_rank is 2 samples
 ▶️ rank 0 - Starting gstep 0/1
 	Rank 0 - gstep 0 - batch_indx 1 - lat shape is torch.Size([2, 6, 4, 64, 64]), txt_emb shape is torch.Size([2, 77, 768]), mask shape is torch.Size([2, 77])
-	Rank 0 - gstep 0 - batch_indx 1 - noisy_lat shape is torch.Size([2, 6, 4, 64, 64]), prediction done, cost 0.4051 seconds
+	Rank 0 - gstep 0 - batch_indx 1 - noisy_lat shape is torch.Size([2, 6, 4, 64, 64]), prediction done, cost 0.6602 seconds
 	rank0 - gstep 0 - batch_indx 1 - check noise std mean - noise std: 1.0   mean: -0.00015163421630859375
-	rank0 - gstep 0 - batch_indx 1 - check pred std mean  - pred std: 0.20428036153316498   mean: 0.0033618961460888386
-	Rank 0 - gstep 0 - batch_indx 1 - backward done, cost 2.01 seconds - loss type is <class 'torch.Tensor'> shape is torch.Size([]), loss is 1.0420072078704834 
-	Rank 0 - gstep 0 - out of accumulate - batch_indx 1 cost 2.80 seconds, before waiting for all ranks to finish accumulate ...
+	rank0 - gstep 0 - batch_indx 1 - check pred std mean  - pred std: 0.204287588596344   mean: 0.00336156296543777
+	Rank 0 - gstep 0 - batch_indx 1 - backward done, cost 2.05 seconds - loss type is <class 'torch.Tensor'> shape is torch.Size([]), loss is 1.042008638381958 
+	Rank 0 - gstep 0 - out of accumulate - batch_indx 1 cost 3.02 seconds, before waiting for all ranks to finish accumulate ...
 	Rank 0 - gstep 0 - out of accumulate - batch_indx 1 after waiting for all ranks to finish accumulate, cost 0.00 seconds, real_sample_size_per_rank is 4 samples
 ▶️ rank 0 - Starting gstep 0/1
 	Rank 0 - gstep 0 - batch_indx 2 - lat shape is torch.Size([2, 6, 4, 64, 64]), txt_emb shape is torch.Size([2, 77, 768]), mask shape is torch.Size([2, 77])
-	Rank 0 - gstep 0 - batch_indx 2 - noisy_lat shape is torch.Size([2, 6, 4, 64, 64]), prediction done, cost 0.2890 seconds
+	Rank 0 - gstep 0 - batch_indx 2 - noisy_lat shape is torch.Size([2, 6, 4, 64, 64]), prediction done, cost 0.2948 seconds
 	rank0 - gstep 0 - batch_indx 2 - check noise std mean - noise std: 1.0   mean: -0.0011138916015625
-	rank0 - gstep 0 - batch_indx 2 - check pred std mean  - pred std: 0.22057439386844635   mean: 0.005205489695072174
-	Rank 0 - gstep 0 - batch_indx 2 - backward done, cost 2.02 seconds - loss type is <class 'torch.Tensor'> shape is torch.Size([]), loss is 1.0453006029129028 
-	Rank 0 - gstep 0 - out of accumulate - batch_indx 2 cost 2.79 seconds, before waiting for all ranks to finish accumulate ...
+	rank0 - gstep 0 - batch_indx 2 - check pred std mean  - pred std: 0.22058109939098358   mean: 0.005217075347900391
+	Rank 0 - gstep 0 - batch_indx 2 - backward done, cost 2.02 seconds - loss type is <class 'torch.Tensor'> shape is torch.Size([]), loss is 1.0453099012374878 
+	Rank 0 - gstep 0 - out of accumulate - batch_indx 2 cost 2.80 seconds, before waiting for all ranks to finish accumulate ...
 	Rank 0 - gstep 0 - out of accumulate - batch_indx 2 after waiting for all ranks to finish accumulate, cost 0.00 seconds, real_sample_size_per_rank is 6 samples
 ▶️ rank 0 - Starting gstep 0/1
 	Rank 0 - gstep 0 - batch_indx 3 - lat shape is torch.Size([2, 6, 4, 64, 64]), txt_emb shape is torch.Size([2, 77, 768]), mask shape is torch.Size([2, 77])
-	Rank 0 - gstep 0 - batch_indx 3 - noisy_lat shape is torch.Size([2, 6, 4, 64, 64]), prediction done, cost 0.2915 seconds
+	Rank 0 - gstep 0 - batch_indx 3 - noisy_lat shape is torch.Size([2, 6, 4, 64, 64]), prediction done, cost 0.2930 seconds
 	rank0 - gstep 0 - batch_indx 3 - check noise std mean - noise std: 1.0   mean: 0.001190185546875
-	rank0 - gstep 0 - batch_indx 3 - check pred std mean  - pred std: 0.22951844334602356   mean: -0.0015413463115692139
-	Rank 0 - gstep 0 - batch_indx 3 - backward done, cost 2.02 seconds - loss type is <class 'torch.Tensor'> shape is torch.Size([]), loss is 1.048068881034851 
+	rank0 - gstep 0 - batch_indx 3 - check pred std mean  - pred std: 0.2295113056898117   mean: -0.001542695565149188
+	Rank 0 - gstep 0 - batch_indx 3 - backward done, cost 2.02 seconds - loss type is <class 'torch.Tensor'> shape is torch.Size([]), loss is 1.0480701923370361 
 trainer.py - train - [rank 0] → Using standard checkpoint (not DeepSpeed): <class 'model.architecture.CubeDiffModel'>, Standard checkpoint saved to: outputs/cubediff_tiny_lora/ds_ckpt/deepspeed_ckpt_step1
-[rank 0] → Checkpoint saved, cost 11.1210 seconds
+[rank 0] → Checkpoint saved, cost 11.4322 seconds
 	Rank 0 - gstep 1 - batch_indx 3 - global_loss done, cost 0.0010 seconds, global_loss shape is torch.Size([])
 lr and sample and epoch progress: rank 0 — gstep 1/1 ▶ 100.0% updates | Samples ▶ 100.0% (8/8) | Equivalent Epochs seen ▶ 0.01 LR at step 1: 0.000e+00 total_samples = 8
-Rank 0 - for current udpate step - gstep 1 - processed batch 3 - real_sample_size_per_rank 8 samples done, cost 14.1796 seconds
+Rank 0 - for current udpate step - gstep 1 - processed batch 3 - real_sample_size_per_rank 8 samples done, cost 14.3699 seconds
 
-	Rank 0 - gstep 1 - out of accumulate - batch_indx 3 cost 14.18 seconds, before waiting for all ranks to finish accumulate ...
+	Rank 0 - gstep 1 - out of accumulate - batch_indx 3 cost 14.37 seconds, before waiting for all ranks to finish accumulate ...
 	Rank 0 - gstep 1 - out of accumulate - batch_indx 3 after waiting for all ranks to finish accumulate, cost 0.00 seconds, real_sample_size_per_rank is 8 samples
 	rank 0 → gstep 1 - generate_samples (total_processed_samples=8, prompts=['A beautiful mountain lake at sunset with snow-capped peaks'])
 		[rank 0] loading ZeRO‐sharded checkpoint from outputs/cubediff_tiny_lora/ds_ckpt/deepspeed_ckpt_step1 ...
@@ -3157,6 +3157,6 @@ Rank 0 - for current udpate step - gstep 1 - processed batch 3 - real_sample_siz
 		[rank 0] >>>> Scheduler class: <class 'diffusers.schedulers.scheduling_ddpm.DDPMScheduler'>
 		[rank 0] >>>> prediction_type: 'epsilon'
 		[rank 0] >>>> num_train_timesteps: 1000
-		[rank 0] ZeRO load_state completed in 2.588s
-		[rank 0] denoised in 44.149s
-		[rank 0], trainer.py, pano shape = torch.Size([3, 3072, 512]) dtype= torch.float32
+		[rank 0] ZeRO load_state completed in 2.757s
+		[rank 0] denoised in 43.764s
+		[rank 0], trainer.py, pano shape = torch.Size([512, 3, 3072]) dtype= torch.float32

@@ -314,4 +314,5 @@ class CubeDiffPipeline:
         # pano = cubemap_to_equirect(cube_np, self.height*2, self.width*4)
         pano = cubemap_to_equirect(cube_np, self.height, self.width*2)
         # return pano.permute(1,2,0)  # [He,We,3]
-        return pano.permute(1, 2, 0).contiguous()  # [He, We, 3]
+        # return pano.permute(1, 2, 0).contiguous()  # [He, We, 3]
+        return pano
