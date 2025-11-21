@@ -329,7 +329,8 @@ def cubemap_to_equirect(faces: torch.Tensor, overlap: int = 8, sigma: float = 4.
         pano[:, mask] = sampled[f][:, mask]
 
     # return pano.permute(1,2,0)  # [He,We,3]
-    return pano.permute(1,2,0).contiguous() # [H,W,3] should be 2:1 equirectangular 
+    # return pano.permute(1,2,0).contiguous() # [H,W,3] should be 2:1 equirectangular 
+    return pano
     
 
 import os
