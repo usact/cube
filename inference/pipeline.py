@@ -307,12 +307,25 @@ class CubeDiffPipeline:
             k = rotation_map.get(f, 0)
             if k:
                 dec = torch.rot90(dec, k=k, dims=[1,2])
+                print(f"pipeline.py - CubeDiffPipeline - generate - Rotated face {f} by {k*90}° CCW, dec shape is {dec.shape}, dec dtype is {dec.dtype}")
             faces.append(dec.cpu().float())
 
         # 6) Project via the unchanged cubemap_to_equirect
+        print("pipeline.py - CubeDiffPipeline - generate - stacking faces and projecting to equirectangular...")
+        print(f"pipeline.py - CubeDiffPipeline - generate - each face shape: {faces[0].shape}, num faces: {len(faces)}")
         cube_np = torch.stack(faces, 0).numpy()
+        print(f"pipeline.py - generate - cube_np shape: {cube_np.shape}, dtype: {cube_np.dtype}, min: {cube_np.min()}, max: {cube_np.max()}")
+        
+        # in order to make cube_np (all faces) compatiable with "faces: Tensor[6, H, W, 3]" in preprocessing.cubemap_to_equirect()
+        # permute faces ([6, 3, 512, 512) to be [6, 512, 512, 3]
+        # convert from [6, 3, H, W] → [6, H, W, 3]
+        cube_np = cube_np.transpose(0, 2, 3, 1)
+        print(f"pipeline.py - generate - after cube_np.permute(0, 2, 3, 1), cube_np shape: {cube_np.shape}, dtype: {cube_np.dtype}, min: {cube_np.min()}, max: {cube_np.max()}")
+        
         # pano = cubemap_to_equirect(cube_np, self.height*2, self.width*4)
+        print(f"pipeline.py - generate - self.height: {self.height}, self.width: {self.width}")
         pano = cubemap_to_equirect(cube_np, self.height, self.width*2)
+        print(f"pipeline.py - CubeDiffPipeline - generate - pano shape: {pano.shape}")
         # return pano.permute(1,2,0)  # [He,We,3]
         # return pano.permute(1, 2, 0).contiguous()  # [He, We, 3]
         return pano
